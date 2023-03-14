@@ -17,13 +17,33 @@ public class DemoApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		Scanner scanner = new Scanner(System.in);
 
+//		System.out.println("Hello word");
+
 		System.out.println("What your name?");
 		String name=null;
 		if (scanner.hasNext()) {
 			name = scanner.nextLine();
 		}
-		String containsAny = "abc";
 		System.out.println("Hello "+ name);
-		System.out.println("containsAny "+ StringUtils.containsAny(name, containsAny));
+		String containsAny = "abc";
+		System.out.println("containsAny "+ "with " + containsAny + "result is " + StringUtils.containsAny(name, containsAny));
+
+		String containsIgnoreCase = "abc";
+		System.out.println("containsAny "+ "with " + containsIgnoreCase + "result is " + StringUtils.containsIgnoreCase(name, containsIgnoreCase));
+
+		String countMatches = "abc";
+		System.out.println("countMatches "+ "with " + countMatches + "result is " + StringUtils.countMatches(name, countMatches));
+
+		String appendIfMissing = "abc";
+		System.out.println("appendIfMissing "+ "with " + appendIfMissing + "result is " + StringUtils.appendIfMissing(name, appendIfMissing));
+
+		String prependIfMissing = "abc";
+		System.out.println("prependIfMissing "+ "with " + prependIfMissing + "result is " + StringUtils.prependIfMissing(name, prependIfMissing));
+
+		String uppercase = "abc";
+		System.out.println("countMatches "+ "with " + uppercase + "result is " + StringUtils.upperCase(name));
+
+		String lowercase = "abc";
+		System.out.println("lowercase "+ "with " + lowercase + "result is " + StringUtils.lowerCase(name));
 	}
 }
