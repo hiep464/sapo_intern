@@ -1,31 +1,31 @@
 # Conventional Commit (Use in project)
-- fix: A bug fix (using for code)
-- feat: A new feature (using when add code code of exercise)
-- refactor: A code change that neither fixes a bug nor adds a feature (using for code)
-- docs: Documentation only changes (use for readme, report)
+- **fix**: A bug fix (using for code)
+- **feat**: A new feature (using when add code of exercise)
+- **refactor**: A code change that neither fixes a bug nor adds a feature (using for code)
+- **docs**: Documentation only changes (use for readme, report)
 # Conventional Java
-- Package names:
-Package names use only lowercase letters and digits (no underscores). Consecutive words are simply concatenated together.
+- **Package names**:\
+Package names use only lowercase letters and digits (no underscores). Consecutive words are simply concatenated together.\
 For example, com.example.deepspace, not com.example.deepSpace or com.example.deep_space.
-- Class names:
-Class names are written in UpperCamelCase.
+- **Class names**:\
+Class names are written in UpperCamelCase.\
 Class names are typically nouns or noun phrases. For example, Character or ImmutableList. 
-- Method names:
-Method names are written in lowerCamelCase.
+- **Method names**:\
+Method names are written in lowerCamelCase.\
 Method names are typically verbs or verb phrases. For example, sendMessage or stop.
-- Constant names:
+- **Constant names**:\
 Constant names use UPPER_SNAKE_CASE: all uppercase letters, with each word separated from the next by a single underscore.
-- Non-constant field names:
-Non-constant field names (static or otherwise) are written in lowerCamelCase.
+- **Non-constant field names**:\
+Non-constant field names (static or otherwise) are written in lowerCamelCase.\
 These names are typically nouns or noun phrases. For example, computedValues or index.
-- Parameter names:
-Parameter names are written in lowerCamelCase.
+- **Parameter names**:\
+Parameter names are written in lowerCamelCase.\
 One-character parameter names in public methods should be avoided.
-- Local variable names:
-Local variable names are written in lowerCamelCase.
+- **Local variable names**:\
+Local variable names are written in lowerCamelCase.\
 Even when final and immutable, local variables are not considered to be constants, and should not be styled as constants.
-- Type variable names:
-A single capital letter, optionally followed by a single numeral (such as E, T, X, T2)
+- **Type variable names**:\
+A single capital letter, optionally followed by a single numeral (such as E, T, X, T2)\
 A name in the form used for classes (see Section 5.2.2, Class names), followed by the capital letter T (examples: RequestT, FooBarT).
 
 # Ex1_Framework: Báo cáo thu hoạch:
@@ -39,9 +39,9 @@ A name in the form used for classes (see Section 5.2.2, Class names), followed b
 - Dùng maven package lại thành 1 file thực thi .jar
 # Ex03_Mysql
 - File báo cáo những kiến thức tìm hiểu được Sql, no sql, join, function, procedure, transaction, index,...
-- Viết câu lệnh tạo các bảng ( theo đúng naming convension mysql)
-Kho: Id, mã kho, tên, địa điểm, ngày tạo, ngày sửa
-Loại danh mục: Id, mã loại danh mục, tên, mô tả, ngày tạo, ngày sửa
+- Viết câu lệnh tạo các bảng ( theo đúng naming convension mysql)\
+Kho: Id, mã kho, tên, địa điểm, ngày tạo, ngày sửa\
+Loại danh mục: Id, mã loại danh mục, tên, mô tả, ngày tạo, ngày sửa\
 Sản phẩm: Id, mã sản phẩm, danh mục, kho, tên, mô tả sản phẩm, đường dẫn ảnh, số lượng sản phẩm, số lượng bán, giá, ngày tạo, ngày sửa
 - Viết các câu lệnh
 Tạo bảng, thêm, sửa, xóa, kho, sản phẩm, loại danh mục theo id
@@ -50,8 +50,8 @@ Lọc các sản phẩm có chứa từ 'Điện Thoại' và thuộc loại dan
 Xóa danh mục đồng thời xóa luôn các sản phẩm thuộc danh mục đó (Có sử dụng transaction)
 Procedure lấy 10 sản phẩm có số lượng bán nhiều nhất
 # Ex4_Spring Boot Basic
-- File báo cáo những kiến thức tìm hiểu được tight coupled, loosely coupled và dependency injection
+- File báo cáo những kiến thức tìm hiểu được tight coupled, loosely coupled và dependency injection\
 file cấu hình và Profiles
-- Xem yêu cầu bài tại link sau:
-https://git.dktsoft.com:2008/training/spring-dependency-injection
+- Xem yêu cầu bài tại link sau:\
+https://git.dktsoft.com:2008/training/spring-dependency-injection \
 Yêu cầu thêm cấu hình theo profiles
