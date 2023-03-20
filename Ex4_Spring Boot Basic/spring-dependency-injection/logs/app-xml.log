@@ -1,0 +1,5 @@
+[INFO ] 20-03-2023 09:11:47 [main] DemoApplication - Starting DemoApplication on HIEPLV-TT with PID 3496 (started by ADMIN in D:\SAPO_intern\Day2\hieplv\Ex4_Spring Boot Basic\spring-dependency-injection)
+[INFO ] 20-03-2023 09:11:47 [main] DemoApplication - No active profile set, falling back to default profiles: default
+[INFO ] 20-03-2023 09:11:47 [main] DemoApplication - Started DemoApplication in 0.87 seconds (JVM running for 2.314)
+[INFO ] 20-03-2023 09:12:02 [main] Log - CustomerId: hiep, balance: 2981928
+[INFO ] 20-03-2023 09:12:02 [main] Log - Current ATM money is 100000

@@ -1,5 +1,6 @@
 package com.sapo.edu.demo;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -11,8 +12,8 @@ public class BidvAtm implements Atm {
     @Value("${moneyAtm}")
     private BigDecimal moneyAtm;
 
-
-    private Printer printer = new PrinterConsole();
+    @Autowired
+    private Printer printer;
 
     @Override
     public void withDraw(Customer customer, BigDecimal amount) {

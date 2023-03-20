@@ -1,9 +1,5 @@
 package com.sapo.edu.demo;
 
-
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
-
 import java.math.BigDecimal;
 
 public interface Atm {

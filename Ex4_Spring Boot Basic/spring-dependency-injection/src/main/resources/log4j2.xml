@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="DEBUG">
+    <Appenders>
+        <File name="LogToFile" fileName="logs/app-xml.log">
+            <PatternLayout pattern="[%-5level] %d{dd-MM-yyyy HH:mm:ss} [%t] %c{1} - %msg%n"/>
+        </File>
+    </Appenders>
+    <Loggers>
+        <!-- tránh các bản ghi trùng lặp thì set additivity=false -->
+        <Logger level="debug" additivity="false">
+            <AppenderRef ref="LogToFile"/>
+        </Logger>
+        <Root level="info">
+            <AppenderRef ref="LogToFile"/>
+        </Root>
+    </Loggers>
+</Configuration>
