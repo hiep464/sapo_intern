@@ -1,5 +1,6 @@
 package com.sapo.edu.demo;
 
+import com.sapo.edu.Configs;
 import com.sapo.edu.dao.CategoryDao;
 import com.sapo.edu.dao.InventoryDao;
 import com.sapo.edu.dao.ProductDao;
@@ -16,8 +17,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.ApplicationContext;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.jdbc.core.RowMapper;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
 @SpringBootApplication()
@@ -28,14 +33,18 @@ public class DemoApplication implements CommandLineRunner {
 	@Autowired
 	ApplicationContext ctx;
 
+	InventoryDao inventoryDao = new InventoryDao();
+	CategoryDao categoryDao = new CategoryDao();
+	ProductDao productDao = new ProductDao();
+
 	public static void main(String[] args) {
 		SpringApplication.run(DemoApplication.class, args);
 	}
 
 	@Override
 	public void run(String... args) throws Exception {
-		printMenu();
 		while (true){
+			printMenu();
 			int choose = userRequest();
 			handleUserRequest(choose);
 		}
@@ -63,7 +72,9 @@ public class DemoApplication implements CommandLineRunner {
 	public void handleUserRequest(int choose){
 		switch (choose){
 			case 1:
-				printJbdc();
+				menu();
+				int data = userRequest();
+				handleJbdc(data);
 				break;
 			case 2:
 				printJpa();
@@ -75,24 +86,77 @@ public class DemoApplication implements CommandLineRunner {
 				break;
 		}
 	}
+
+	public void menu(){
+		System.out.println("1. print");
+		System.out.println("2. insert");
+		System.out.println("3. update");
+		System.out.println("4. delete");
+		System.out.println("5. statistical");
+	}
+
+	public void handleJbdc(int data){
+		switch (data){
+			case 1:
+				printJbdc();
+				break;
+			case 2:
+				insertJbdc();
+				break;
+			case 3:
+				updateJbdc();
+				break;
+			case 4:
+				deleteJbdc();
+				break;
+			case 5:
+				statistical();
+			default:
+				System.out.println("Invalid choose");
+				break;
+		}
+	}
+
 	public void printJbdc(){
-		InventoryDao inventoryDao = new InventoryDao();
 		List<Inventory> inventories = inventoryDao.getAll();
 		for(int i = 0; i < inventories.size(); i++){
 			System.out.println(inventories.get(i).toString());
 		}
 
-		CategoryDao categoryDao = new CategoryDao();
 		List<Category> categories = categoryDao.getAll();
 		for(int i = 0; i < categories.size(); i++){
 			System.out.println(categories.get(i).toString());
 		}
 
-		ProductDao productDao = new ProductDao();
 		List<Product> products = productDao.getAll();
 		for(int i = 0; i < products.size(); i++){
 			System.out.println(products.get(i).toString());
 		}
+	}
+
+	public void insertJbdc(){
+		Inventory inventory = new Inventory(4, "K004", "name 4", "", null, null);
+		inventoryDao.save(inventory);
+	}
+
+	public void updateJbdc(){
+		Inventory inventory = new Inventory(4, "K004", "name 4", "location 4", null, null);
+		inventoryDao.update(inventory);
+	}
+
+	public void deleteJbdc(){
+		Inventory inventory = new Inventory(4, "K004", "name 4", "location 4", null, null);
+		inventoryDao.delete(inventory);
+	}
+
+	public void statistical(){
+		String sql = "select c.category_name, count(p.id) as products, sum(p.quantity) as number_of_products " +
+				"from ex03_mysql.Product as p join ex03_mysql.Category as c " +
+				"on (p.category_id = c.id) " +
+				"group by c.category_name " +
+				"order by number_of_products desc;";
+		List<Map<String, Object>> values = Configs.jdbcTemplate.queryForList(sql);
+		System.out.println(values);
 	}
 
 	public void printJpa(){

@@ -36,17 +36,24 @@ public class InventoryDao implements Dao<Inventory> {
     public void save(Inventory i) {
         String sql = "Insert into " + TABLE_NAME +
                 "(id, inventory_code, inventory_name, location, created_at, updated_at) values (?, ?, ?, ?, ?, ?)";
-        Configs.jdbcTemplate.update(sql, i.getId(), i.getInventory_code(), i.getInventory_name(), i.getLocation(), i.getCreated_at(), i.getUpdated_at());
+        Configs.jdbcTemplate.update(sql, i.getId(), i.getInventoryCode(), i.getInventoryName(), i.getLocation(), i.getCreatedAt(), i.getUpdatedAt());
         System.out.println(i.toString());
     }
 
     @Override
     public void update(Inventory i) {
-
+        String sql = "Update " + TABLE_NAME +
+                " SET id = ?, inventory_code = ?, inventory_name = ?, location = ?, created_at = ?, updated_at = ? " +
+                "where id = " + i.getId();
+        Configs.jdbcTemplate.update(sql, i.getId(), i.getInventoryCode(), i.getInventoryName(),
+                i.getLocation(), i.getCreatedAt(), i.getUpdatedAt());
+        System.out.println(i.toString());
     }
 
     @Override
     public void delete(Inventory i) {
-
+        String sql = "Delete from " +TABLE_NAME + " where id = "+i.getId();
+        Configs.jdbcTemplate.execute(sql);
+        System.out.println(i.toString());
     }
 }

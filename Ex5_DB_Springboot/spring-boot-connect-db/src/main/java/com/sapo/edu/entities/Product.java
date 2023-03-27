@@ -12,53 +12,54 @@ public class Product {
     @Id
     private int id;
 
-    private String product_code;
-    private int category_id;
-    private int inventory_id;
-    private String product_name;
+    private String productCode;
+    private int categoryId;
+    private int inventoryId;
+    private String productName;
     private String description;
-    private String image_path;
+    private String imagePath;
     private int quantity;
     private int sold;
     private BigDecimal price;
-    private LocalDateTime created_at;
-    private LocalDateTime updated_at;
+    private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
 
     protected Product() {};
 
-    public Product(int id, String product_code, int category_id, int inventory_id, String product_name,
-                   String description, String image_path, int quantity, int sold, String price,
-                   String created_at, String updated_at){
+    public Product(int id, String productCode, int categoryId, int inventoryId, String productName,
+                   String description, String imagePath, int quantity, int sold, String price,
+                   String createdAt, String updatedAt){
         this.id = id;
-        this.product_code = product_code;
-        this.product_name = product_name;
-        this.category_id = category_id;
-        this.inventory_id = inventory_id;
+        this.productCode = productCode;
+        this.productName = productName;
+        this.categoryId = categoryId;
+        this.inventoryId = inventoryId;
         this.description = description;
-        this.image_path = image_path;
+        this.imagePath = imagePath;
         this.quantity = quantity;
         this.sold = sold;
         this.price = new BigDecimal(price);
-        this.created_at = LocalDateTime.parse(created_at, Configs.formatter);
-        if(updated_at != null)
-            this.updated_at = LocalDateTime.parse(updated_at, Configs.formatter);
+        if(createdAt != null)
+        this.createdAt = LocalDateTime.parse(createdAt, Configs.formatter);
+        if(updatedAt != null)
+            this.updatedAt = LocalDateTime.parse(updatedAt, Configs.formatter);
     }
 
     @Override
     public String toString() {
         return "Product{" +
                 "id=" + id +
-                ", product_code='" + product_code + '\'' +
-                ", category_id=" + category_id +
-                ", inventory_id=" + inventory_id +
-                ", product_name='" + product_name + '\'' +
+                ", productCode='" + productCode + '\'' +
+                ", categoryId=" + categoryId +
+                ", inventoryId=" + inventoryId +
+                ", productName='" + productName + '\'' +
                 ", description='" + description + '\'' +
-                ", image_path='" + image_path + '\'' +
+                ", imagePath='" + imagePath + '\'' +
                 ", quantity=" + quantity +
                 ", sold=" + sold +
                 ", price=" + price +
-                ", created_at=" + created_at +
-                ", updated_at=" + updated_at +
+                ", createdAt=" + createdAt +
+                ", updatedAt=" + updatedAt +
                 '}';
     }
 }
