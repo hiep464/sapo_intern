@@ -1,5 +1,7 @@
 package com.sapo.edu.demo.model;
 
+import io.swagger.annotations.ApiModel;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -8,6 +10,7 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table
+@ApiModel(value = "Category model")
 public class Category {
     @Id
     Integer id;

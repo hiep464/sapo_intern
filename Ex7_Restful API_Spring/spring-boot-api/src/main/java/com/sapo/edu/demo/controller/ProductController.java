@@ -3,6 +3,7 @@ package com.sapo.edu.demo.controller;
 import com.sapo.edu.demo.dto.productdto.ProductDto;
 import com.sapo.edu.demo.model.Product;
 import com.sapo.edu.demo.service.ProductService;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
@@ -20,6 +21,7 @@ public class ProductController {
     @Autowired
     ProductService productService;
 
+    @ApiOperation(value = "Xem danh sách sản phẩm")
     @GetMapping("products")
     public ResponseEntity<List<Product>> getAll(){
         List<Product> products = productService.getAll();
@@ -28,6 +30,7 @@ public class ProductController {
         return ResponseEntity.ok(products);
     }
 
+    @ApiOperation(value = "Phân trang sản phẩm")
     @GetMapping("productsPage")
     public ResponseEntity<Page<Product>> getProductInPage(
             @RequestParam(name = "page", required = false, defaultValue = "0") Integer page,
@@ -36,6 +39,7 @@ public class ProductController {
         return ResponseEntity.ok(productPage);
     }
 
+    @ApiOperation(value = "Xem thông tin 1 sản phẩm")
     @GetMapping("products/{id}")
     public ResponseEntity<Optional<Product>> getById(@PathVariable("id") Integer id){
         Optional<Product> product = productService.getById(id);
@@ -44,6 +48,7 @@ public class ProductController {
         return ResponseEntity.ok(product);
     }
 
+    @ApiOperation(value = "Tạo mới 1 sản phẩm")
     @PostMapping("products")
     public ResponseEntity<Product> createProduct(@Valid @RequestBody ProductDto productDto){
         Product product = productService.createProduct(productDto);
@@ -52,6 +57,7 @@ public class ProductController {
         return ResponseEntity.ok(product);
     }
 
+    @ApiOperation(value = "Sửa thông tin sản phẩm")
     @PutMapping("products/{id}")
     public ResponseEntity<Product> updateProduct(@PathVariable("id") Integer id,@Valid @RequestBody Product product){
         Product res = productService.updateProduct(id, product);

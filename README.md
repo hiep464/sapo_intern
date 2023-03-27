@@ -78,4 +78,5 @@ Viết các API về sản phẩm, danh mục. Yêu cầu có validate dữ li�
    + GET /admin/products/{id} : Lấy thông tin 1 sản phẩm
    + GET /admin/products: Cho phép lọc sản phẩm theo tên, có phân trang (Theo 2 kiểu, mỗi trang tối đa 10 bản ghi)
 - Làm tương tự tạo các API danh mục, kho\
-Lưu ý API xoá danh mục sẽ xoá đồng thời xoá sản phẩm thuộc danh mục đấy ( Y/c sử dụng transaction)
+Lưu ý API xoá danh mục sẽ xoá đồng thời xoá sản phẩm thuộc danh mục đấy ( Y/c sử dụng transaction)/
+- go to: http://localhost:8080/swagger-ui.html
