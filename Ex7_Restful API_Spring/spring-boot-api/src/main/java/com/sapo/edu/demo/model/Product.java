@@ -4,6 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
@@ -14,12 +15,18 @@ public class Product {
     @Id
     private int id;
 
+    @NotBlank(message = "Inventory code is mandatory")
     private String productCode;
 
-    @Column(name = "category_id")
+    @NotBlank(message = "Inventory code is mandatory")
     private int categoryId;
+
+    @NotBlank(message = "Inventory code is mandatory")
     private int inventoryId;
+
+    @NotBlank(message = "Inventory code is mandatory")
     private String productName;
+
     private String description;
     private String imagePath;
     private int quantity;

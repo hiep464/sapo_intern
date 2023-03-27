@@ -3,6 +3,7 @@ package com.sapo.edu.demo.model;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
 import java.time.LocalDateTime;
 
 @Entity
@@ -10,8 +11,13 @@ import java.time.LocalDateTime;
 public class Category {
     @Id
     Integer id;
+
+    @NotBlank(message = "CategoryCode is mandatory")
     String categoryCode;
+
+    @NotBlank(message = "CategoryName is mandatory")
     String categoryName;
+
     String description;
     LocalDateTime createdAt;
     LocalDateTime updatedAt;

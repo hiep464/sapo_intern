@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
@@ -44,7 +45,7 @@ public class ProductController {
     }
 
     @PostMapping("products")
-    public ResponseEntity<Product> createProduct(@RequestBody ProductDto productDto){
+    public ResponseEntity<Product> createProduct(@Valid @RequestBody ProductDto productDto){
         Product product = productService.createProduct(productDto);
         if(product == null)
             return (ResponseEntity<Product>) ResponseEntity.status(HttpStatus.BAD_REQUEST);
@@ -52,7 +53,7 @@ public class ProductController {
     }
 
     @PutMapping("products/{id}")
-    public ResponseEntity<Product> updateProduct(@PathVariable("id") Integer id, @RequestBody Product product){
+    public ResponseEntity<Product> updateProduct(@PathVariable("id") Integer id,@Valid @RequestBody Product product){
         Product res = productService.updateProduct(id, product);
         if(res == null)
             return (ResponseEntity<Product>) ResponseEntity.notFound();

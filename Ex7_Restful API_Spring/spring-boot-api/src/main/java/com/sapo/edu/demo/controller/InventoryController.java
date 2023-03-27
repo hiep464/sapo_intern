@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
@@ -31,7 +32,7 @@ public class InventoryController {
     }
 
     @PostMapping("inventories")
-    public ResponseEntity<Inventory> createInventory(@RequestBody Inventory inventory){
+    public ResponseEntity<Inventory> createInventory(@Valid @RequestBody Inventory inventory){
         Inventory inventory1 = inventoryService.createInventory(inventory);
         if(inventory1 == null)
             return (ResponseEntity<Inventory>) ResponseEntity.notFound();
@@ -39,7 +40,7 @@ public class InventoryController {
     }
 
     @PutMapping("inventories/{id}")
-    public ResponseEntity<Inventory> updateInventory(@PathVariable Integer id, @RequestBody Inventory inventory){
+    public ResponseEntity<Inventory> updateInventory(@PathVariable Integer id,@Valid @RequestBody Inventory inventory){
         Inventory inventory1 = inventoryService.updateInventory(id, inventory);
         if(inventory1 == null)
             return (ResponseEntity<Inventory>) ResponseEntity.notFound();

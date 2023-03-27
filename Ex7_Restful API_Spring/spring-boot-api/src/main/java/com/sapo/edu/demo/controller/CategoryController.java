@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
@@ -34,7 +35,7 @@ public class CategoryController {
     }
 
     @PostMapping("/categories")
-    public ResponseEntity<Category> createCategory(@RequestBody Category category){
+    public ResponseEntity<Category> createCategory(@Valid @RequestBody Category category){
         Category category1 = categoryService.createCategory(category);
         if(category1 == null)
             return (ResponseEntity<Category>) ResponseEntity.status(HttpStatus.BAD_REQUEST);
@@ -42,7 +43,7 @@ public class CategoryController {
     }
 
     @PutMapping("/categories/{id}")
-    public ResponseEntity<Category> updateCategory(@PathVariable Integer id,@RequestBody Category category){
+    public ResponseEntity<Category> updateCategory(@PathVariable Integer id,@Valid @RequestBody Category category){
         Category category1 = categoryService.updateCategory(id, category);
         if(category1 == null)
             return (ResponseEntity<Category>) ResponseEntity.status(HttpStatus.BAD_REQUEST);
