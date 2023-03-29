@@ -44,10 +44,10 @@ Kho: Id, mã kho, tên, địa điểm, ngày tạo, ngày sửa\
 Loại danh mục: Id, mã loại danh mục, tên, mô tả, ngày tạo, ngày sửa\
 Sản phẩm: Id, mã sản phẩm, danh mục, kho, tên, mô tả sản phẩm, đường dẫn ảnh, số lượng sản phẩm, số lượng bán, giá, ngày tạo, ngày sửa
 - Viết các câu lệnh
-Tạo bảng, thêm, sửa, xóa, kho, sản phẩm, loại danh mục theo id
-Lọc các sản phẩm có chứa từ 'Điện Thoại' và thuộc loại danh mục có tên là 'Apple'
-Đếm số lượng sản phẩm trong mỗi loại danh mục, sắp xếp theo thứ tự giảm dần
-Xóa danh mục đồng thời xóa luôn các sản phẩm thuộc danh mục đó (Có sử dụng transaction)
+Tạo bảng, thêm, sửa, xóa, kho, sản phẩm, loại danh mục theo id\
+Lọc các sản phẩm có chứa từ 'Điện Thoại' và thuộc loại danh mục có tên là 'Apple'\
+Đếm số lượng sản phẩm trong mỗi loại danh mục, sắp xếp theo thứ tự giảm dần\
+Xóa danh mục đồng thời xóa luôn các sản phẩm thuộc danh mục đó (Có sử dụng transaction)\
 Procedure lấy 10 sản phẩm có số lượng bán nhiều nhất
 # Ex4_Spring Boot Basic
 - File báo cáo những kiến thức tìm hiểu được tight coupled, loosely coupled và dependency injection\
