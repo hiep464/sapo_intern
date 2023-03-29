@@ -1,6 +1,8 @@
 package com.sapo.edu.demo.service;
 
 import com.sapo.edu.demo.dto.productdto.ProductDto;
+import com.sapo.edu.demo.exception.DuplicateException;
+import com.sapo.edu.demo.exception.NotFoundException;
 import com.sapo.edu.demo.model.Product;
 import com.sapo.edu.demo.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +12,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class ProductService {
@@ -28,8 +29,10 @@ public class ProductService {
         return productPage;
     }
 
-    public Optional<Product> getById(Integer id){
-        return productRepository.findById(id);
+    public Product getById(Integer id){
+        if(productRepository.findById(id).isEmpty())
+            throw new NotFoundException("Not found product");
+        return productRepository.findById(id).get();
     }
 
     public Product generateDto(ProductDto productDto){
@@ -43,16 +46,14 @@ public class ProductService {
     }
 
     public Product createProduct(ProductDto productDto){
-        Optional<Product> product = productRepository.findById(productDto.getId());
-        if(product.isEmpty())
+        if(productRepository.findById(productDto.getId()).isEmpty())
             return productRepository.save(generateDto(productDto));
-        return null;
+        throw new DuplicateException("Product already exist");
     }
 
     public Product updateProduct(Integer id, Product product){
-        Optional<Product> res = productRepository.findById(id);
-        if(res.isEmpty())
-            return null;
+        if(productRepository.findById(id).isEmpty())
+            throw new NotFoundException("Not found product");
         return productRepository.save(product);
     }
 }

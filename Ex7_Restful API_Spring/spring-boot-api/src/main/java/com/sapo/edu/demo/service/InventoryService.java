@@ -1,12 +1,13 @@
 package com.sapo.edu.demo.service;
 
+import com.sapo.edu.demo.exception.DuplicateException;
+import com.sapo.edu.demo.exception.NotFoundException;
 import com.sapo.edu.demo.model.Inventory;
 import com.sapo.edu.demo.repository.InventoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class InventoryService {
@@ -18,21 +19,21 @@ public class InventoryService {
         return inventoryRepository.findAll();
     }
 
-    public Optional<Inventory> getById(Integer id){
-        return inventoryRepository.findById(id);
+    public Inventory getById(Integer id){
+        if(inventoryRepository.findById(id).isEmpty())
+            throw new NotFoundException("Not found inventory");
+        return inventoryRepository.findById(id).get();
     }
 
     public Inventory createInventory(Inventory inventory){
-        Optional<Inventory> inventory1 = inventoryRepository.findById(inventory.getId());
-        if(inventory1.isEmpty())
-            return null;
-        return inventoryRepository.save(inventory);
+        if(inventoryRepository.findById(inventory.getId()).isEmpty())
+            return inventoryRepository.save(inventory);
+        throw new DuplicateException("Inventory already exist");
     }
 
     public Inventory updateInventory(Integer id, Inventory inventory){
-        Optional<Inventory> res = inventoryRepository.findById(id);
-        if(res.isEmpty())
-            return  null;
+        if(inventoryRepository.findById(id).isEmpty())
+            throw new NotFoundException("Not found inventory");
         return inventoryRepository.save(inventory);
     }
 }

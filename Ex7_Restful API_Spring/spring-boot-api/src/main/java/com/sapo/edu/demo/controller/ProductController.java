@@ -2,6 +2,7 @@ package com.sapo.edu.demo.controller;
 
 import com.sapo.edu.demo.dto.productdto.ProductDto;
 import com.sapo.edu.demo.model.Product;
+import com.sapo.edu.demo.response.ResponseHandler;
 import com.sapo.edu.demo.service.ProductService;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,8 +12,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("admin")
@@ -23,46 +22,54 @@ public class ProductController {
 
     @ApiOperation(value = "Xem danh sách sản phẩm")
     @GetMapping("products")
-    public ResponseEntity<List<Product>> getAll(){
-        List<Product> products = productService.getAll();
-        if(products == null)
-            return (ResponseEntity<List<Product>>) ResponseEntity.notFound();
-        return ResponseEntity.ok(products);
+    public ResponseEntity<Object> getAll(){
+        return ResponseHandler.responseBuilder(
+                "success",
+                HttpStatus.OK,
+                productService.getAll()
+        );
     }
 
     @ApiOperation(value = "Phân trang sản phẩm")
     @GetMapping("productsPage")
-    public ResponseEntity<Page<Product>> getProductInPage(
+    public ResponseEntity<Object> getProductInPage(
             @RequestParam(name = "page", required = false, defaultValue = "0") Integer page,
             @RequestParam(name = "size", required = false, defaultValue = "5") Integer size){
         Page<Product> productPage = productService.getProductInPage(page, size);
-        return ResponseEntity.ok(productPage);
+        return ResponseHandler.responseBuilder(
+                "success",
+                HttpStatus.OK,
+                productPage
+        );
     }
 
     @ApiOperation(value = "Xem thông tin 1 sản phẩm")
     @GetMapping("products/{id}")
-    public ResponseEntity<Optional<Product>> getById(@PathVariable("id") Integer id){
-        Optional<Product> product = productService.getById(id);
-        if(product.isEmpty())
-            return (ResponseEntity<Optional<Product>>) ResponseEntity.status(HttpStatus.BAD_REQUEST);
-        return ResponseEntity.ok(product);
+    public ResponseEntity<Object> getById(@PathVariable("id") Integer id){
+        return ResponseHandler.responseBuilder(
+                "success",
+                HttpStatus.OK,
+                productService.getById(id)
+        );
     }
 
     @ApiOperation(value = "Tạo mới 1 sản phẩm")
     @PostMapping("products")
-    public ResponseEntity<Product> createProduct(@Valid @RequestBody ProductDto productDto){
-        Product product = productService.createProduct(productDto);
-        if(product == null)
-            return (ResponseEntity<Product>) ResponseEntity.status(HttpStatus.BAD_REQUEST);
-        return ResponseEntity.ok(product);
+    public ResponseEntity<Object> createProduct(@Valid @RequestBody ProductDto productDto){
+        return ResponseHandler.responseBuilder(
+                "success",
+                HttpStatus.OK,
+                productService.createProduct(productDto)
+        );
     }
 
     @ApiOperation(value = "Sửa thông tin sản phẩm")
     @PutMapping("products/{id}")
-    public ResponseEntity<Product> updateProduct(@PathVariable("id") Integer id,@Valid @RequestBody Product product){
-        Product res = productService.updateProduct(id, product);
-        if(res == null)
-            return (ResponseEntity<Product>) ResponseEntity.notFound();
-        return ResponseEntity.ok(res);
+    public ResponseEntity<Object> updateProduct(@PathVariable("id") Integer id,@Valid @RequestBody Product product){
+        return ResponseHandler.responseBuilder(
+                "success",
+                HttpStatus.OK,
+                productService.updateProduct(id, product)
+        );
     }
 }
