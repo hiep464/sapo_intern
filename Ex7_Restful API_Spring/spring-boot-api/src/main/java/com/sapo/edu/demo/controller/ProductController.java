@@ -72,4 +72,14 @@ public class ProductController {
                 productService.updateProduct(id, product)
         );
     }
+
+    @ApiOperation(value = "Thống kê 10 sản phẩm có số lượng bán nhiều nhất")
+    @GetMapping("products/statistical")
+    public ResponseEntity<Object> statistical(){
+        return ResponseHandler.responseBuilder(
+                "success",
+                HttpStatus.OK,
+                productService.getProductsWithMaxSold()
+        );
+    }
 }

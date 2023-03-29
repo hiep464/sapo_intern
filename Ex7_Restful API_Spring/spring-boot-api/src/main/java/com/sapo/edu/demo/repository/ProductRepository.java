@@ -14,4 +14,7 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
 
 
     public List<Product> deleteAllByCategoryId(Integer id);
+
+    public List<Product> findFirst10ByOrderBySoldDesc();
+
 }

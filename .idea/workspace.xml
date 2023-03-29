@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="d51c1eba-94e2-49e2-ae8d-e3ef651f3f0d" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/Ex7_Restful API_Spring/spring-boot-api/src/main/java/com/sapo/edu/demo/controller/CategoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Ex7_Restful API_Spring/spring-boot-api/src/main/java/com/sapo/edu/demo/controller/CategoryController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ex7_Restful API_Spring/spring-boot-api/src/main/java/com/sapo/edu/demo/controller/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Ex7_Restful API_Spring/spring-boot-api/src/main/java/com/sapo/edu/demo/controller/ProductController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ex7_Restful API_Spring/spring-boot-api/src/main/java/com/sapo/edu/demo/repository/ProductRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/Ex7_Restful API_Spring/spring-boot-api/src/main/java/com/sapo/edu/demo/repository/ProductRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ex7_Restful API_Spring/spring-boot-api/src/main/java/com/sapo/edu/demo/service/CategoryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Ex7_Restful API_Spring/spring-boot-api/src/main/java/com/sapo/edu/demo/service/CategoryService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Ex7_Restful API_Spring/spring-boot-api/src/main/java/com/sapo/edu/demo/service/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Ex7_Restful API_Spring/spring-boot-api/src/main/java/com/sapo/edu/demo/service/ProductService.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="2NgQkqcOy3Eu4Gp9b4hbuOA2KzC" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="d51c1eba-94e2-49e2-ae8d-e3ef651f3f0d" name="Default Changelist" comment="" />
+      <created>1680083390502</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1680083390502</updated>
+      <workItem from="1680083394441" duration="36000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+</project>
