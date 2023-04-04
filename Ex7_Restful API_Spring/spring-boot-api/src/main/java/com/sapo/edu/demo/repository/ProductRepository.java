@@ -1,10 +1,10 @@
 package com.sapo.edu.demo.repository;
 
 import com.sapo.edu.demo.model.Product;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -13,8 +13,11 @@ import java.util.List;
 public interface ProductRepository extends JpaRepository<Product, Integer> {
 
 
-    public List<Product> deleteAllByCategoryId(Integer id);
+    List<Product> deleteAllByCategoryId(Integer id);
 
-    public List<Product> findFirst10ByOrderBySoldDesc();
+    List<Product> findFirst10ByOrderBySoldDesc();
+
+    @Query("select p from Product p where upper(p.productName) like concat('%', upper(?1), '%')")
+    Page<Product> findProductsByProductNameIsLike(String name, Pageable pageable);
 
 }

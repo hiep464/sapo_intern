@@ -20,22 +20,13 @@ public class ProductController {
     @Autowired
     ProductService productService;
 
-    @ApiOperation(value = "Xem danh sách sản phẩm")
+    @ApiOperation(value = "Xem danh sách sản phẩm, phân trang sản phẩm")
     @GetMapping("products")
-    public ResponseEntity<Object> getAll(){
-        return ResponseHandler.responseBuilder(
-                "success",
-                HttpStatus.OK,
-                productService.getAll()
-        );
-    }
-
-    @ApiOperation(value = "Phân trang sản phẩm")
-    @GetMapping("productsPage")
     public ResponseEntity<Object> getProductInPage(
             @RequestParam(name = "page", required = false, defaultValue = "0") Integer page,
-            @RequestParam(name = "size", required = false, defaultValue = "5") Integer size){
-        Page<Product> productPage = productService.getProductInPage(page, size);
+            @RequestParam(name = "size", required = false, defaultValue = "5") Integer size,
+            @RequestParam(name = "search", required = false) String keyWord){
+        Page<Product> productPage = productService.getProductInPage(page, size, keyWord);
         return ResponseHandler.responseBuilder(
                 "success",
                 HttpStatus.OK,

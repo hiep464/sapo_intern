@@ -20,14 +20,11 @@ public class ProductService {
     @Autowired
     ProductRepository productRepository;
 
-    public List<Product> getAll(){
-        return productRepository.findAll();
-    }
-
-    public Page<Product> getProductInPage(Integer page, Integer size){
+    public Page<Product> getProductInPage(Integer page, Integer size, String keyWord){
         Pageable pageable = PageRequest.of(page, size);
-        Page<Product> productPage = productRepository.findAll(pageable);
-        return productPage;
+        if(keyWord != null)
+            return productRepository.findProductsByProductNameIsLike(keyWord, pageable);
+        return productRepository.findAll(pageable);
     }
 
     public Product getById(Integer id){
