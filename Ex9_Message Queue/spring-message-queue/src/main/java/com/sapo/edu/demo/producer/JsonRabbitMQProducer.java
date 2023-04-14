@@ -1,13 +1,10 @@
 package com.sapo.edu.demo.producer;
 
-import com.sapo.edu.demo.model.Thongke;
-import com.sapo.edu.demo.model.User;
+import com.sapo.edu.demo.entities.User;
 import com.sapo.edu.demo.repository.InventoryRepository;
-import com.sapo.edu.demo.repository.ThongKeRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +13,6 @@ import java.util.List;
 @Service
 public class JsonRabbitMQProducer {
 
-    @Autowired
     InventoryRepository inventoryRepository;
 
     @Value("${rabbitmq.exchange.name}")
@@ -29,7 +25,12 @@ public class JsonRabbitMQProducer {
 
     private RabbitTemplate rabbitTemplate;
 
-    public JsonRabbitMQProducer(RabbitTemplate rabbitTemplate){
+//    public JsonRabbitMQProducer(RabbitTemplate rabbitTemplate){
+//        this.rabbitTemplate = rabbitTemplate;
+//    }
+
+    public JsonRabbitMQProducer(InventoryRepository inventoryRepository, RabbitTemplate rabbitTemplate) {
+        this.inventoryRepository = inventoryRepository;
         this.rabbitTemplate = rabbitTemplate;
     }
 

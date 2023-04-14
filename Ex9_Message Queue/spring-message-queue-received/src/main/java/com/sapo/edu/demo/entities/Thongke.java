@@ -1,4 +1,4 @@
-package com.sapo.edu.demo.model;
+package com.sapo.edu.demo.entities;
 
 import lombok.Data;
 

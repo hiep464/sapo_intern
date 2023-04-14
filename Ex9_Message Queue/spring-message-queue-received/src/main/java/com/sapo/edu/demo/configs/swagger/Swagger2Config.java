@@ -1,4 +1,4 @@
-package com.sapo.edu.demo;
+package com.sapo.edu.demo.configs.swagger;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

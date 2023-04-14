@@ -1,4 +1,4 @@
-package com.sapo.edu.demo;
+package com.sapo.edu.demo.configs.security;
 
 import com.sapo.edu.demo.authentication.JwtAuthenticationFilter;
 import com.sapo.edu.demo.service.UserService;
@@ -18,8 +18,12 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-    @Autowired
+
     UserService userService;
+
+    public WebSecurityConfig(UserService userService) {
+        this.userService = userService;
+    }
 
     @Bean
     public JwtAuthenticationFilter jwtAuthenticationFilter() {

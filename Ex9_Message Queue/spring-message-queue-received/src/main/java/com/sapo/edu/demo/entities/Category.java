@@ -1,7 +1,6 @@
-package com.sapo.edu.demo.model;
+package com.sapo.edu.demo.entities;
 
 import io.swagger.annotations.ApiModel;
-import lombok.AllArgsConstructor;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;

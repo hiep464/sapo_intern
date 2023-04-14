@@ -1,9 +1,6 @@
-package com.sapo.edu.demo.model;
+package com.sapo.edu.demo.entities;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 
 import javax.persistence.*;
 

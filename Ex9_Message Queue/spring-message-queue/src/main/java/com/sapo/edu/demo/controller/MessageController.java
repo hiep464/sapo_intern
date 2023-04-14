@@ -1,6 +1,7 @@
 package com.sapo.edu.demo.controller;
 
-import com.sapo.edu.demo.model.User;
+import com.sapo.edu.demo.entities.User;
+import com.sapo.edu.demo.producer.JsonKafkaProducer;
 import com.sapo.edu.demo.producer.JsonRabbitMQProducer;
 import com.sapo.edu.demo.producer.RabbitMQProducer;
 import org.springframework.http.ResponseEntity;
@@ -10,11 +11,14 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/v1")
 public class MessageController {
 
+    private JsonKafkaProducer jsonKafkaProducer;
+
     private RabbitMQProducer producer;
 
     private JsonRabbitMQProducer jsonRabbitMQProducer;
 
-    public MessageController(RabbitMQProducer producer, JsonRabbitMQProducer jsonRabbitMQProducer){
+    public MessageController(JsonKafkaProducer jsonKafkaProducer, RabbitMQProducer producer, JsonRabbitMQProducer jsonRabbitMQProducer) {
+        this.jsonKafkaProducer = jsonKafkaProducer;
         this.producer = producer;
         this.jsonRabbitMQProducer = jsonRabbitMQProducer;
     }
@@ -31,8 +35,14 @@ public class MessageController {
 //        return ResponseEntity.ok(user);
 //    }
 
-    @PostMapping("thongke")
-    public ResponseEntity<?> sendJsonMessage(){
+    @PostMapping("thongke/rabitmq")
+    public ResponseEntity<?> sendJsonMessageRabitmq(){
         return ResponseEntity.ok(jsonRabbitMQProducer.sendMessage());
+    }
+
+    @PostMapping("thongke/kafka")
+    public ResponseEntity<?> sendJsonMessageKafka(){
+        jsonKafkaProducer.sendMessage();
+        return ResponseEntity.ok("ok");
     }
 }

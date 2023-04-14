@@ -1,6 +1,5 @@
-package com.sapo.edu.demo.model;
+package com.sapo.edu.demo.entities;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;

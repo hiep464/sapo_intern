@@ -1,4 +1,4 @@
-package com.sapo.edu.demo;
+package com.sapo.edu.demo.configs.rabitmq;
 
 import org.springframework.amqp.core.*;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
