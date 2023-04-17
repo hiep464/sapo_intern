@@ -12,9 +12,10 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.sql.SQLException;
+import java.util.List;
 
 @RestController
-@RequestMapping("admin")
+@RequestMapping("/admin")
 public class ProductController {
 
     ProductService productService;
@@ -24,7 +25,7 @@ public class ProductController {
     }
 
     @ApiOperation(value = "Xem danh sách sản phẩm, phân trang sản phẩm")
-    @GetMapping("products")
+    @GetMapping("/products")
     public ResponseEntity<Object> getProductInPage(
             @RequestParam(name = "page", required = false, defaultValue = "0") Integer page,
             @RequestParam(name = "size", required = false, defaultValue = "5") Integer size,
@@ -38,47 +39,31 @@ public class ProductController {
     }
 
     @ApiOperation(value = "Xem thông tin 1 sản phẩm")
-    @GetMapping("products/{id}")
-    public ResponseEntity<Object> getById(@PathVariable("id") Integer id){
-        return ResponseHandler.responseBuilder(
-                "success",
-                HttpStatus.OK,
-                productService.getById(id)
-        );
+    @GetMapping("/products/{id}")
+    public Product getById(@PathVariable("id") Integer id){
+        return productService.getById(id);
     }
 
     @ApiOperation(value = "Tạo mới 1 sản phẩm")
-    @PostMapping("products")
-    public ResponseEntity<Object> createProduct(@Valid @RequestBody ProductDto productDto){
-        return ResponseHandler.responseBuilder(
-                "success",
-                HttpStatus.OK,
-                productService.createProduct(productDto)
-        );
+    @PostMapping("/products")
+    public Product createProduct(@Valid @RequestBody ProductDto productDto){
+        return productService.createProduct(productDto);
     }
 
     @ApiOperation(value = "Sửa thông tin sản phẩm")
-    @PutMapping("products/{id}")
-    public ResponseEntity<Object> updateProduct(@PathVariable("id") Integer id,@Valid @RequestBody Product product){
-        return ResponseHandler.responseBuilder(
-                "success",
-                HttpStatus.OK,
-                productService.updateProduct(id, product)
-        );
+    @PutMapping("/products/{id}")
+    public Product updateProduct(@PathVariable("id") Integer id,@Valid @RequestBody Product product){
+        return productService.updateProduct(id, product);
     }
 
     @ApiOperation(value = "Thống kê 10 sản phẩm có số lượng bán nhiều nhất")
-    @GetMapping("products/statistical")
-    public ResponseEntity<Object> statistical(){
-        return ResponseHandler.responseBuilder(
-                "success",
-                HttpStatus.OK,
-                productService.getProductsWithMaxSold()
-        );
+    @GetMapping("/products/statistical")
+    public List<Product> statistical(){
+        return productService.getProductsWithMaxSold();
     }
 
     @ApiOperation(value = "demo sql injection")
-    @GetMapping("sql_injection")
+    @GetMapping("/sql_injection")
     public ResponseEntity<Object> sqlInjection(
             @RequestParam(name = "name") String name,
             @RequestParam(name = "id") String id) throws SQLException {
@@ -90,7 +75,7 @@ public class ProductController {
     }
 
     @ApiOperation(value = "prevention sql injection")
-    @GetMapping("prevention")
+    @GetMapping("/prevention")
     public ResponseEntity<Object> preventionSqlInjection(
             @RequestParam(name = "name") String name,
             @RequestParam(name = "id") Integer id) throws SQLException {

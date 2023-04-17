@@ -3,17 +3,13 @@ package com.sapo.edu.demo.entities;
 import io.swagger.annotations.ApiModel;
 
 import javax.persistence.Entity;
-import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
-import java.time.LocalDateTime;
 
 @Entity
 @Table
 @ApiModel(value = "Category model")
-public class Category {
-    @Id
-    Integer id;
+public class Category extends BaseEntity{
 
     @NotBlank(message = "CategoryCode is mandatory")
     String categoryCode;
@@ -22,12 +18,6 @@ public class Category {
     String categoryName;
 
     String description;
-    LocalDateTime createdAt;
-    LocalDateTime updatedAt;
-
-    public Integer getId() {
-        return id;
-    }
 
     public String getCategoryCode() {
         return categoryCode;
@@ -41,18 +31,6 @@ public class Category {
         return description;
     }
 
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
-    }
-
-    public LocalDateTime getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
     public void setCategoryCode(String categoryCode) {
         this.categoryCode = categoryCode;
     }
@@ -63,13 +41,5 @@ public class Category {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public void setCreatedAt(LocalDateTime createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public void setUpdatedAt(LocalDateTime updatedAt) {
-        this.updatedAt = updatedAt;
     }
 }

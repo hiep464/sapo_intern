@@ -10,10 +10,7 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table
-public class Product {
-
-    @Id
-    private int id;
+public class Product extends BaseEntity{
 
     @NotBlank(message = "Inventory code is mandatory")
     private String productCode;
@@ -32,31 +29,6 @@ public class Product {
     private int quantity;
     private int sold;
     private BigDecimal price;
-    private LocalDateTime createdAt;
-    private LocalDateTime updatedAt;
-
-
-    @Override
-    public String toString() {
-        return "Product{" +
-                "id=" + id +
-                ", productCode='" + productCode + '\'' +
-                ", categoryId=" + categoryId +
-                ", inventoryId=" + inventoryId +
-                ", productName='" + productName + '\'' +
-                ", description='" + description + '\'' +
-                ", imagePath='" + imagePath + '\'' +
-                ", quantity=" + quantity +
-                ", sold=" + sold +
-                ", price=" + price +
-                ", createdAt=" + createdAt +
-                ", updatedAt=" + updatedAt +
-                '}';
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public void setProductCode(String productCode) {
         this.productCode = productCode;
@@ -96,18 +68,6 @@ public class Product {
         this.price = price;
     }
 
-    public void setCreatedAt(LocalDateTime createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public void setUpdatedAt(LocalDateTime updatedAt) {
-        this.updatedAt = updatedAt;
-    }
-
-    public int getId() {
-        return id;
-    }
-
     public String getProductCode() {
         return productCode;
     }
@@ -142,13 +102,5 @@ public class Product {
 
     public BigDecimal getPrice() {
         return price;
-    }
-
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
-    }
-
-    public LocalDateTime getUpdatedAt() {
-        return updatedAt;
     }
 }

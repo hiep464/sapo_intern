@@ -7,20 +7,11 @@ import javax.persistence.*;
 @Entity
 @Table
 @Data
-public class User {
-    @Id
-    private Integer id;
+public class User extends BaseEntity{
 
     @Column(nullable = false, unique = true)
     private String username;
     private String password;
-
-    public User() {
-    }
-
-    public Integer getId() {
-        return id;
-    }
 
     public String getUsername() {
         return username;
@@ -28,10 +19,6 @@ public class User {
 
     public String getPassword() {
         return password;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
     }
 
     public void setUsername(String username) {

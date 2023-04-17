@@ -8,10 +8,7 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table
-public class Inventory {
-
-    @Id
-    Integer id;
+public class Inventory extends BaseEntity{
 
     @NotBlank(message = "Inventory code is mandatory")
     String inventoryCode;
@@ -21,13 +18,6 @@ public class Inventory {
 
     @NotBlank(message = "Location code is mandatory")
     String location;
-
-    LocalDateTime createdAt;
-    LocalDateTime updatedAt;
-
-    public Integer getId() {
-        return id;
-    }
 
     public String getInventoryCode() {
         return inventoryCode;
@@ -39,13 +29,5 @@ public class Inventory {
 
     public String getLocation() {
         return location;
-    }
-
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
-    }
-
-    public LocalDateTime getUpdatedAt() {
-        return updatedAt;
     }
 }
