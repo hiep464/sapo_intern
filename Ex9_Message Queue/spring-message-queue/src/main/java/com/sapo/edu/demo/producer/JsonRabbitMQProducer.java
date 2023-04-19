@@ -25,10 +25,6 @@ public class JsonRabbitMQProducer {
 
     private RabbitTemplate rabbitTemplate;
 
-//    public JsonRabbitMQProducer(RabbitTemplate rabbitTemplate){
-//        this.rabbitTemplate = rabbitTemplate;
-//    }
-
     public JsonRabbitMQProducer(InventoryRepository inventoryRepository, RabbitTemplate rabbitTemplate) {
         this.inventoryRepository = inventoryRepository;
         this.rabbitTemplate = rabbitTemplate;

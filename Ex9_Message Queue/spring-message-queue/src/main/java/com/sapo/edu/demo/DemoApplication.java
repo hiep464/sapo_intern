@@ -25,7 +25,7 @@ public class DemoApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		User user = new User();
-		user.setId(2);
+		user.setId(1);
 		user.setUsername("admin");
 		user.setPassword(passwordEncoder.encode("admin"));
 		userRepository.save(user);

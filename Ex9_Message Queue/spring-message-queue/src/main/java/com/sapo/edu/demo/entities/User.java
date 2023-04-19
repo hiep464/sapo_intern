@@ -7,10 +7,16 @@ import javax.persistence.*;
 @Entity
 @Table
 @Data
-public class User extends BaseEntity{
+public class User{
+
+    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
 
     @Column(nullable = false, unique = true)
     private String username;
+
+    @Column(nullable = false)
     private String password;
 
     public String getUsername() {

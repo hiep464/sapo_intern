@@ -2,6 +2,8 @@ package com.sapo.edu.demo.controller;
 
 import com.sapo.edu.demo.authentication.CustomUserDetails;
 import com.sapo.edu.demo.authentication.JwtTokenProvider;
+import com.sapo.edu.demo.dto.userdto.CreateUserDto;
+import com.sapo.edu.demo.entities.User;
 import com.sapo.edu.demo.request.LoginRequest;
 import com.sapo.edu.demo.response.LoginResponse;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -13,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 
 @RestController("UserController")
-@RequestMapping("api")
+@RequestMapping("/api")
 public class UserController {
 
     AuthenticationManager authenticationManager;
@@ -25,7 +27,7 @@ public class UserController {
         this.tokenProvider = tokenProvider;
     }
 
-    @PostMapping("login")
+    @PostMapping("/login")
     public LoginResponse authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
 
         // Xác thực từ username và password.
@@ -45,4 +47,9 @@ public class UserController {
         String jwt = tokenProvider.generateToken((CustomUserDetails) authentication.getPrincipal());
         return new LoginResponse(jwt);
     }
+
+//    @PostMapping("/register")
+//    public User register(@RequestBody CreateUserDto createUserDto){
+//
+//    }
 }
