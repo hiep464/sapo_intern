@@ -1,9 +1,13 @@
 <header>
   <div class="header-top-wrapper">
     <div class="container header-top d-flex justify-content-between">
-      <div class="header-top-button">
-        <button>Đăng ký</button>
-        <button>Đăng nhập</button>
+      <div class="header-top-button d-flex">
+        <button class="btn-register">
+          <span style="color: white;">Đăng ký</span>
+        </button>
+        <button class="btn-login">
+          <span style="color: white;">Đăng Nhập</span>
+        </button>
       </div>
       <div class="header-top-social d-flex">
         <div class="facebook">fb</div>
@@ -43,17 +47,17 @@
   <div class="header-bottom-wrapper">
     <div class="d-flex justify-content-center">
       <div class="container header-bottom d-flex">
-        <div style="width: calc((100% / 7) * 4)">
+        <div class="pt-2 pb-2" style="width: calc((100% / 7) * 4)">
           <span>Danh mục sách</span>
         </div>
         <div
-          class="border-start border-end"
+          class="border-start border-end pt-2 pb-2"
           style="width: calc((100% / 7) * 2)"
         >
-          <span class="ms-2">Tìm kiếm sách</span>
+          <input type="text" class="ms-4 header-bottom-input" placeholder="Tìm kiếm sách"/>
         </div>
         <div
-          class="border-end"
+          class="border-end pt-2 pb-2"
           style="width: calc(100% / 7); text-align: center"
         >
           Giỏ hàng

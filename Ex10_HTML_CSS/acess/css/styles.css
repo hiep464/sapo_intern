@@ -11,7 +11,7 @@
 }
 
 /* header */
-.header-top-wrapper {
+.header-top-wrapper{
   background-color: #2a2a2a;
   color: white;
 }
@@ -23,6 +23,26 @@
 
 .header-body-right-content {
   font-weight: 600;
+}
+
+.header-top-button{
+  width: 200px;
+}
+
+.btn-register, .btn-login{
+  background-color: #2a2a2a;
+  border: none;
+  width: 50%;
+  border-right: 1px solid #353535;
+}
+
+.btn-register{
+  border-left: 1px solid #353535;
+}
+
+.header-bottom-input{
+  border: none;
+  background-color: #fafafa;
 }
 /* body */
 
