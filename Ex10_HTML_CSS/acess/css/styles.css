@@ -26,7 +26,7 @@
 }
 
 .header-top-button{
-  width: 200px;
+  width: 260px;
 }
 
 .btn-register, .btn-login{
@@ -43,6 +43,19 @@
 .header-bottom-input{
   border: none;
   background-color: #fafafa;
+}
+
+.social-common{
+  width: 44px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-left: 1px solid #353535;
+}
+
+.youtube{
+  border-right: 1px solid #353535;
 }
 /* body */
 
@@ -77,4 +90,45 @@ li {
 .footer-bottom-wrapper {
   background-color: #212121;
   color: #828282;
+}
+
+.dot {
+  height: 40px;
+  width: 40px;
+  background-color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dot-wrapper{
+  height: 54px;
+  width: 54px;
+  background-color: #ebebeb;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fa{
+  color: #39b580;
+}
+
+.fa-search, .fa-user, .fa-pencil, .fa-angle-down{
+  color: #9e9e9e;
+}
+
+.fa-facebook, .fa-twitter, .fa-google-plus, .fa-youtube{
+  color: #aeaeae;
+}
+
+.sign-up-header{
+  width: 100%;
+  height: 180px;
+}
+
+.sign-up-header{
+  background-image: url(https://wallpaperaccess.com/full/934072.jpg);
 }
