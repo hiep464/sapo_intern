@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+input:focus{
+    outline: none;
+}
+
+.btn-submit:hover, .btn-create:hover, .btn-update:hover {
+    background-color: red;
+}
+
+.page-active{
+    padding: 6px 15px;
+    background-color: red;
+}
+
+.btn-details:hover {
+    color: rgba(59, 130, 246);
+}
+
+.btn-delete:hover {
+    color: red;
+}
