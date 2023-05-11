@@ -14,7 +14,7 @@ function Categoryitem(data: any) {
     const handleMutationEvent = {
         onSuccess: () => {
             // setSucess(true);
-            alert('delete sucess');
+            // alert('delete sucess');
             // setTimeout(() => {
             //     setSucess(false);
             // }, 2000);

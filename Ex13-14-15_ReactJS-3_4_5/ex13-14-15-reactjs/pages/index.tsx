@@ -44,9 +44,6 @@ export default function Login() {
             ) : (
                 ''
             )}
-            {/* <div className="fixed inset-0 flex items-center justify-center">
-                    <ReactLoading type={'spinningBubbles'} color={'#0288d1'} />
-                </div> */}
             <div className="container w-screen bg-gray-400 h-screen flex justify-center items-center">
                 <div className="w-20 flex justify-center items-center flex-col">
                     <span className="font-semibold text-3xl mb-2 text-red-600">Login</span>

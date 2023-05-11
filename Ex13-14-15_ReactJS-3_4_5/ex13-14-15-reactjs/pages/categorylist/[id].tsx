@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { useGetCategory, useUpdateCategory } from '@/apiHandle/useCategory';
 import Layout from '@/layout';
 import type { NextPageWithLayout } from '../_app';
-import { ReactElement, useState } from 'react';
+import { ReactElement, useEffect, useState } from 'react';
 import Alert from '@/components/Alert';
 
 // type dataUpdate = {
@@ -14,18 +14,21 @@ import Alert from '@/components/Alert';
 //     description: string;
 // };
 
+
 const Details: NextPageWithLayout = () => {
-    const [code, setCode] = useState('');
-    const [name, setName] = useState('');
-    const [description, setDescription] = useState('');
+    // const [code, setCode] = useState('');
+    // const [name, setName] = useState('');
+    // const [description, setDescription] = useState('');
     const [sucess, setSucess] = useState(false);
+    const [cate, setCate] = useState({id: '', categoryCode: '', categoryName: '', description: ''})
     const [auth, setAuth] = useState(false);
 
     const handleMutationEvent = {
-        onSuccess: () => {
+        onSuccess: (data: any) => {
             setSucess(true);
             // alert('sucess')
-
+            console.log(data.data)
+            
             setTimeout(() => {
                 setSucess(false);
             }, 2000);
@@ -36,6 +39,8 @@ const Details: NextPageWithLayout = () => {
                 // alert("phiên đăng nhập hết hạn")
                 setAuth(true);
                 // router.push('/');
+            } else if (httpStatus === 400) {
+                alert('Categorycode is not change');
             } else alert('error');
         },
     };
@@ -45,19 +50,28 @@ const Details: NextPageWithLayout = () => {
 
     const category = useGetCategory(idParam);
 
+    useEffect(() => {
+        setCate(category)
+    }, [category])
+
     const { mutate: update } = useUpdateCategory(idParam, handleMutationEvent);
     const handleUpdate = () => {
+        const ipCode: any = document.getElementById('inputCode')
+        const ipName: any = document.getElementById('inputName')
+        const ipDescription: any = document.getElementById('inputDescription')
         const data: any = {
             id: parseInt(category?.id),
-            categoryCode: code,
-            categoryName: name,
-            description: description,
+            categoryCode: ipCode?.value,
+            categoryName: ipName?.value,
+            description: ipDescription?.value,
         };
         update(data);
     };
 
     return (
         <>
+            {/* {console.log(category?.categoryCode,category?.categoryName,category?.description)} */}
+            {/* {console.log(code,name,description)} */}
             <Head>
                 <title>Details</title>
             </Head>
@@ -81,48 +95,47 @@ const Details: NextPageWithLayout = () => {
             )}
             <div className="flex justify-center items-center flex-col">
                 <span className="text-3xl font-bold my-6">Details</span>
-                {category ? (
-                    <div className="w-2/5 text-left ml-60 mb-4">
-                        <div className="flex my-2">
-                            <span className="w-2/5">Code :</span>
-                            <div className="w-3/5">
-                                <input
-                                    className="text-center"
-                                    defaultValue={category?.categoryCode}
-                                    onChange={(e) => {
-                                        setCode(e.target.value);
-                                    }}
-                                ></input>
-                            </div>
-                        </div>
-                        <div className="flex my-2">
-                            <span className="w-2/5">Name :</span>
-                            <div className="w-3/5">
-                                <input
-                                    className="text-center"
-                                    defaultValue={category?.categoryName}
-                                    onChange={(e) => {
-                                        setName(e.target.value);
-                                    }}
-                                ></input>
-                            </div>
-                        </div>
-                        <div className="flex my-2">
-                            <span className="w-2/5">Description :</span>
-                            <div className="w-3/5">
-                                <input
-                                    className="text-center"
-                                    defaultValue={category?.description}
-                                    onChange={(e) => {
-                                        setDescription(e.target.value);
-                                    }}
-                                ></input>
-                            </div>
+                <div className="w-2/5 text-left ml-60 mb-4">
+                    <div className="flex my-2">
+                        <span className="w-2/5">Code :</span>
+                        <div className="w-3/5">
+                            <input
+                                id='inputCode'
+                                className="text-center"
+                                defaultValue={cate?.categoryCode}
+                                // onChange={(e) => {
+                                //     setCode(e.target.value);
+                                // }}
+                            ></input>
                         </div>
                     </div>
-                ) : (
-                    ''
-                )}
+                    <div className="flex my-2">
+                        <span className="w-2/5">Name :</span>
+                        <div className="w-3/5">
+                            <input
+                                id='inputName'
+                                className="text-center"
+                                defaultValue={cate?.categoryName}
+                                // onChange={(e) => {
+                                //     setName(e.target.value);
+                                // }}
+                            ></input>
+                        </div>
+                    </div>
+                    <div className="flex my-2">
+                        <span className="w-2/5">Description :</span>
+                        <div className="w-3/5">
+                            <input
+                                id='inputDescription'
+                                className="text-center"
+                                defaultValue={cate?.description}
+                                // onChange={(e) => {
+                                //     setDescription(e.target.value);
+                                // }}
+                            ></input>
+                        </div>
+                    </div>
+                </div>
                 <div className="flex">
                     <button
                         onClick={handleUpdate}

@@ -14,14 +14,14 @@ const CategoryList: NextPageWithLayout = () => {
     const pageSize = useGetPageSize(0, 5);
 
     const inPage = useGetCategoryInPage(page, 5);
-    console.log(0);
+    // console.log(pageSize);
+    // console.log(inPage);
 
     return (
         <>
             <Head>
                 <title>Category List</title>
             </Head>
-            {console.log(1)}
             <div className="flex justify-center items-center flex-col">
                 <span className="text-3xl font-bold my-6">Category List</span>
                 <div className="relative w-4/5">

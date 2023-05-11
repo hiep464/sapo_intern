@@ -13,7 +13,7 @@ export const useFetch = (url: any, params: any, config: any): object => {
         enabled: !!url,
         ...config,
     });
-
+    console.log(context)
     return context;
 };
 
